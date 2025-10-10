@@ -24,6 +24,7 @@ export interface CartItem {
   customization: {
     color: string;
     pattern: string;
+    material: string;
     name?: string;
   };
   price: number;

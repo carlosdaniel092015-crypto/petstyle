@@ -30,23 +30,23 @@ export const ProductPreview = ({ image, color, pattern, name, hasName }: Product
   };
 
   const getPatternOverlay = () => {
-    if (pattern === "solid") return null;
+    if (pattern === "plain") return null;
 
     const patterns: { [key: string]: string } = {
-      stripes: "repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(255,255,255,0.3) 10px, rgba(255,255,255,0.3) 20px)",
-      dots: "radial-gradient(circle, rgba(255,255,255,0.3) 20%, transparent 20%), radial-gradient(circle, rgba(255,255,255,0.3) 20%, transparent 20%)",
-      hearts: "url('data:image/svg+xml,%3Csvg width=\"40\" height=\"40\" xmlns=\"http://www.w3.org/2000/svg\"%3E%3Cpath d=\"M20,35 C20,35 5,25 5,15 C5,10 8,7 12,7 C15,7 18,9 20,12 C22,9 25,7 28,7 C32,7 35,10 35,15 C35,25 20,35 20,35 Z\" fill=\"rgba(255,255,255,0.3)\"/%3E%3C/svg%3E')",
-      paws: "url('data:image/svg+xml,%3Csvg width=\"40\" height=\"40\" xmlns=\"http://www.w3.org/2000/svg\"%3E%3Ccircle cx=\"20\" cy=\"25\" r=\"8\" fill=\"rgba(255,255,255,0.3)\"/%3E%3Ccircle cx=\"12\" cy=\"15\" r=\"5\" fill=\"rgba(255,255,255,0.3)\"/%3E%3Ccircle cx=\"28\" cy=\"15\" r=\"5\" fill=\"rgba(255,255,255,0.3)\"/%3E%3Ccircle cx=\"15\" cy=\"8\" r=\"4\" fill=\"rgba(255,255,255,0.3)\"/%3E%3Ccircle cx=\"25\" cy=\"8\" r=\"4\" fill=\"rgba(255,255,255,0.3)\"/%3E%3C/svg%3E')",
-      bones: "url('data:image/svg+xml,%3Csvg width=\"40\" height=\"40\" xmlns=\"http://www.w3.org/2000/svg\"%3E%3Crect x=\"15\" y=\"12\" width=\"10\" height=\"16\" fill=\"rgba(255,255,255,0.3)\" rx=\"2\"/%3E%3Ccircle cx=\"20\" cy=\"10\" r=\"4\" fill=\"rgba(255,255,255,0.3)\"/%3E%3Ccircle cx=\"20\" cy=\"30\" r=\"4\" fill=\"rgba(255,255,255,0.3)\"/%3E%3C/svg%3E')",
+      stripes: "repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(0,0,0,0.15) 10px, rgba(0,0,0,0.15) 20px)",
+      dots: "radial-gradient(circle, rgba(0,0,0,0.15) 25%, transparent 25%), radial-gradient(circle, rgba(0,0,0,0.15) 25%, transparent 25%)",
+      hearts: "url('data:image/svg+xml,%3Csvg width=\"40\" height=\"40\" xmlns=\"http://www.w3.org/2000/svg\"%3E%3Cpath d=\"M20,35 C20,35 5,25 5,15 C5,10 8,7 12,7 C15,7 18,9 20,12 C22,9 25,7 28,7 C32,7 35,10 35,15 C35,25 20,35 20,35 Z\" fill=\"rgba(0,0,0,0.15)\"/%3E%3C/svg%3E')",
+      paws: "url('data:image/svg+xml,%3Csvg width=\"40\" height=\"40\" xmlns=\"http://www.w3.org/2000/svg\"%3E%3Ccircle cx=\"20\" cy=\"25\" r=\"8\" fill=\"rgba(0,0,0,0.15)\"/%3E%3Ccircle cx=\"12\" cy=\"15\" r=\"5\" fill=\"rgba(0,0,0,0.15)\"/%3E%3Ccircle cx=\"28\" cy=\"15\" r=\"5\" fill=\"rgba(0,0,0,0.15)\"/%3E%3Ccircle cx=\"15\" cy=\"8\" r=\"4\" fill=\"rgba(0,0,0,0.15)\"/%3E%3Ccircle cx=\"25\" cy=\"8\" r=\"4\" fill=\"rgba(0,0,0,0.15)\"/%3E%3C/svg%3E')",
+      bones: "url('data:image/svg+xml,%3Csvg width=\"40\" height=\"40\" xmlns=\"http://www.w3.org/2000/svg\"%3E%3Crect x=\"15\" y=\"12\" width=\"10\" height=\"16\" fill=\"rgba(0,0,0,0.15)\" rx=\"2\"/%3E%3Ccircle cx=\"20\" cy=\"10\" r=\"4\" fill=\"rgba(0,0,0,0.15)\"/%3E%3Ccircle cx=\"20\" cy=\"30\" r=\"4\" fill=\"rgba(0,0,0,0.15)\"/%3E%3C/svg%3E')",
     };
 
     return (
       <div
-        className="absolute inset-0 opacity-60 pointer-events-none"
+        className="absolute inset-0 pointer-events-none z-20"
         style={{
           backgroundImage: patterns[pattern],
-          backgroundSize: pattern === "dots" ? "20px 20px, 20px 20px" : "40px 40px",
-          backgroundPosition: pattern === "dots" ? "0 0, 10px 10px" : "0 0",
+          backgroundSize: pattern === "dots" ? "30px 30px, 30px 30px" : "50px 50px",
+          backgroundPosition: pattern === "dots" ? "0 0, 15px 15px" : "0 0",
         }}
       />
     );

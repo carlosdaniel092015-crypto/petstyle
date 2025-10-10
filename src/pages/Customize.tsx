@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { products, colorOptions, patternOptions } from "@/data/products";
+import { products, colorOptions, patternOptions, materialOptions } from "@/data/products";
 import { useCart } from "@/contexts/CartContext";
 import { toast } from "sonner";
 import { ArrowLeft, ShoppingCart } from "lucide-react";
@@ -20,6 +20,7 @@ const Customize = () => {
 
   const [selectedColor, setSelectedColor] = useState(colorOptions[0]);
   const [selectedPattern, setSelectedPattern] = useState(patternOptions[0]);
+  const [selectedMaterial, setSelectedMaterial] = useState(materialOptions[0]);
   const [petName, setPetName] = useState("");
 
   if (!product) {
@@ -27,7 +28,7 @@ const Customize = () => {
   }
 
   const calculatePrice = () => {
-    return product.basePrice + selectedColor.priceModifier + selectedPattern.priceModifier;
+    return product.basePrice + selectedColor.priceModifier + selectedPattern.priceModifier + selectedMaterial.priceModifier;
   };
 
   const handleAddToCart = () => {
@@ -42,6 +43,7 @@ const Customize = () => {
       customization: {
         color: selectedColor.value,
         pattern: selectedPattern.value,
+        material: selectedMaterial.value,
         name: product.hasName ? petName : undefined,
       },
       price: calculatePrice(),
@@ -115,6 +117,35 @@ const Customize = () => {
                 <p className="text-sm text-muted-foreground mt-3">
                   Seleccionado: {selectedColor.label}
                 </p>
+              </CardContent>
+            </Card>
+
+            {/* Material Selection */}
+            <Card>
+              <CardHeader>
+                <CardTitle>Material</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <div className="grid grid-cols-2 gap-3">
+                  {materialOptions.map((material) => (
+                    <button
+                      key={material.id}
+                      onClick={() => setSelectedMaterial(material)}
+                      className={`p-4 rounded-lg border-2 transition-all hover:scale-105 ${
+                        selectedMaterial.id === material.id
+                          ? "border-primary bg-primary/10"
+                          : "border-border bg-card"
+                      }`}
+                    >
+                      <p className="font-medium">{material.label}</p>
+                      {material.priceModifier > 0 && (
+                        <p className="text-sm text-muted-foreground">
+                          +${material.priceModifier.toFixed(2)}
+                        </p>
+                      )}
+                    </button>
+                  ))}
+                </div>
               </CardContent>
             </Card>
 

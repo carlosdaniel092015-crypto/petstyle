@@ -54,8 +54,15 @@ export const colorOptions = [
   { id: "black", label: "Negro", value: "#1F2937", priceModifier: 0 },
 ];
 
+export const materialOptions = [
+  { id: "nylon", label: "Nylon", value: "nylon", priceModifier: 0 },
+  { id: "leather", label: "Cuero", value: "leather", priceModifier: 5 },
+  { id: "polyester", label: "Poliéster", value: "polyester", priceModifier: 2 },
+  { id: "cotton", label: "Algodón", value: "cotton", priceModifier: 3 },
+];
+
 export const patternOptions = [
-  { id: "solid", label: "Sólido", value: "solid", priceModifier: 0 },
+  { id: "plain", label: "Liso", value: "plain", priceModifier: 0 },
   { id: "stripes", label: "Rayas", value: "stripes", priceModifier: 2 },
   { id: "dots", label: "Puntos", value: "dots", priceModifier: 2 },
   { id: "hearts", label: "Corazones", value: "hearts", priceModifier: 3 },

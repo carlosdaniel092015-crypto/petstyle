@@ -22,6 +22,7 @@ const Cart = () => {
       message += `${index + 1}. ${item.product.name}%0A`;
       message += `   Cantidad: ${item.quantity}%0A`;
       message += `   Color: ${colorOptions.find((c) => c.value === item.customization.color)?.label}%0A`;
+      message += `   Material: ${materialOptions.find((m) => m.value === item.customization.material)?.label}%0A`;
       message += `   Estampado: ${patternOptions.find((p) => p.value === item.customization.pattern)?.label}%0A`;
       if (item.customization.name) {
         message += `   Nombre: ${item.customization.name}%0A`;
@@ -46,8 +47,15 @@ const Cart = () => {
     { id: "black", label: "Negro", value: "#1F2937" },
   ];
 
+  const materialOptions = [
+    { id: "nylon", label: "Nylon", value: "nylon" },
+    { id: "leather", label: "Cuero", value: "leather" },
+    { id: "polyester", label: "Poliéster", value: "polyester" },
+    { id: "cotton", label: "Algodón", value: "cotton" },
+  ];
+
   const patternOptions = [
-    { id: "solid", label: "Sólido", value: "solid" },
+    { id: "plain", label: "Liso", value: "plain" },
     { id: "stripes", label: "Rayas", value: "stripes" },
     { id: "dots", label: "Puntos", value: "dots" },
     { id: "hearts", label: "Corazones", value: "hearts" },
@@ -107,6 +115,10 @@ const Cart = () => {
                         <p>
                           Color:{" "}
                           {colorOptions.find((c) => c.value === item.customization.color)?.label}
+                        </p>
+                        <p>
+                          Material:{" "}
+                          {materialOptions.find((m) => m.value === item.customization.material)?.label}
                         </p>
                         <p>
                           Estampado:{" "}
