@@ -76,7 +76,8 @@ const Customize = () => {
           {/* Left: Product Preview */}
           <div className="lg:sticky lg:top-24 h-fit">
             <ProductPreview
-              image={product.image}
+              productType={product.type}
+              material={selectedMaterial.value}
               color={selectedColor.value}
               pattern={selectedPattern.value}
               name={petName}
